@@ -404,7 +404,7 @@ contract CryptoWorksDistribution is Ownable {
     allocations[_recipient].amountClaimed = newAmountClaimed;
     require(CRYPTW.transfer(_recipient, tokensToTransfer));
     grandTotalClaimed = grandTotalClaimed.add(tokensToTransfer);
-    LogPolyClaimed(_recipient, allocations[_recipient].AllocationSupply, tokensToTransfer, newAmountClaimed, grandTotalClaimed);
+    LogCPYTWClaimed(_recipient, allocations[_recipient].AllocationSupply, tokensToTransfer, newAmountClaimed, grandTotalClaimed);
   }
 
   // Returns the amount of CRYPTW allocated
@@ -414,7 +414,7 @@ contract CryptoWorksDistribution is Ownable {
 
   // Allow transfer of accidentally sent ERC20 tokens
   function refundTokens(address _recipient, address _token) public onlyOwner {
-    require(_token != address(POLY));
+    require(_token != address(CRYPTW));
     IERC20 token = IERC20(_token);
     uint256 balance = token.balanceOf(this);
     require(token.transfer(_recipient, balance));
