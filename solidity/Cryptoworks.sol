@@ -97,7 +97,7 @@ contract CryptoWorks is IERC20 {
   * @dev Constructor for CryptoWorks
   * @dev Assigns the totalSupply to the Cryptworks contract
   */
-  function Cryptowroks(address _cryptDistributionContractAddress) public {
+  function Cryptoworks(address _cryptDistributionContractAddress) public {
     require(_cryptDistributionContractAddress != address(0));
     balances[_cryptDistributionContractAddress] = totalSupply;
     Transfer(address(0), _cryptDistributionContractAddress, totalSupply);
